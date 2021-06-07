@@ -1,0 +1,37 @@
+pdf("tests/outputs/combineTSSplots/combineTSS2plots.pdf",bg="white",fg="black")
+c1 <- read.table ("tests/outputs/combineTSSplots/test_1_TSSplot_5000/TSSprofile_test_1_5000.txt")
+c2 <- read.table ("tests/outputs/combineTSSplots/test_2_TSSplot_5000/TSSprofile_test_2_5000.txt")
+c3 <- read.table ("tests/outputs/combineTSSplots/test_3-test_3_TSSplot_5000/TSSprofile_test_3-test_3_5000.txt")
+c4 <- read.table ("tests/outputs/combineTSSplots/test_4_TSSplot_5000/TSSprofile_test_4_5000.txt")
+c5 <- read.table ("tests/outputs/combineTSSplots/test_5_TSSplot_5000/TSSprofile_test_5_5000.txt")
+c6 <- read.table ("tests/outputs/combineTSSplots/test_6-test_6_TSSplot_5000/TSSprofile_test_6-test_6_5000.txt")
+#
+layout(matrix(data=c(1,2), nrow=2, ncol=1), widths=c(1,1),heights=c(1,1))
+#layout.show(n=2)
+#
+plot(c1[,1],c1[,2],
+     xlab="TSS",
+     ylab="Normalized number of reads",
+     main="H3K4me3 and H3 (chr10)",pch=" ",
+     col.axis="black",col.main="black",col.lab="black")
+lines(c1,col="darkgoldenrod1",lwd=8)
+lines(c2,col="cornflowerblue",lwd=8)
+lines(c3,col="chartreuse3",lwd=8)
+lines(c(0,0),c(0,max(c[,2])),lwd=1,lty=2,col="black")
+mtext(side=4,cex=0.5,font=2,"SeqCode by E. Blanco [2019]")
+legend(x="topleft",c("H3K4me3","H3","H3K4me3/H3"),col=c("darkgoldenrod1","cornflowerblue","chartreuse3"),lwd=8)
+box(col="black")
+#
+plot(c4[,1],c4[,2],
+     xlab="TSS",
+     ylab="Normalized number of reads",
+     main="H3K4me3 and H3 (chr10, one gene)",pch=" ",
+     col.axis="black",col.main="black",col.lab="black")
+lines(c4,col="darkgoldenrod1",lwd=8)
+lines(c5,col="cornflowerblue",lwd=8)
+lines(c6,col="chartreuse3",lwd=8)
+lines(c(0,0),c(0,max(c[,2])),lwd=1,lty=2,col="black")
+mtext(side=4,cex=0.5,font=2,"SeqCode by E. Blanco [2019]")
+legend(x="topleft",c("H3K4me3","H3","H3K4me3/H3"),col=c("darkgoldenrod1","cornflowerblue","chartreuse3"),lwd=8)
+box(col="black")
+dev.off()

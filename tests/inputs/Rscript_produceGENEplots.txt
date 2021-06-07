@@ -1,0 +1,18 @@
+pdf("tests/outputs/produceGENEplots/produceGENE2plots.pdf",bg="white",fg="black")
+c1 <- read.table ("tests/outputs/produceGENEplots/test_1_GENEplot_5000/GENEprofile_test_1_5000.txt")
+c2 <- read.table ("tests/outputs/produceGENEplots/test_6_GENEplot_5000/GENEprofile_test_6_5000.txt")
+plot(c1[,1],c1[,2],
+     xlab="GENE",
+     ylab="Normalized number of reads",axes=FALSE,
+     main="H3K4me3 and H3 (chr10)",pch=" ",
+     col.axis="black",col.main="black",col.lab="black")
+lines(c1,col="darkgoldenrod1",lwd=8)
+lines(c2,col="cornflowerblue",lwd=8)
+lines(c(0,0),c(0,max(c[,2])),lwd=1,lty=2,col="black")
+lines(c(10000,10000),c(0,max(c[,2])),lwd=1,lty=2,col="black")
+mtext(side=4,cex=0.5,font=2,"SeqCode by E. Blanco [2019]")
+legend(x="topleft",c("H3K4me3","H3"),col=c("darkgoldenrod1","cornflowerblue"),lwd=8)
+axis(1,at=c(-5000,0,10000,15000),labels=c("-5000","TSS","TES","+5000"),col="black")
+axis(2,col="black")
+box(col="black")
+dev.off()

@@ -1,0 +1,15 @@
+pdf("tests/outputs/produceTSSplots/produceTSS2plots.pdf",bg="white",fg="black")
+c1 <- read.table ("tests/outputs/produceTSSplots/test_1_TSSplot_5000/TSSprofile_test_1_5000.txt")
+c2 <- read.table ("tests/outputs/produceTSSplots/test_6_TSSplot_5000/TSSprofile_test_6_5000.txt")
+plot(c1[,1],c1[,2],
+     xlab="TSS",
+     ylab="Normalized number of reads",
+     main="H3K4me3 and H3 (chr10)",pch=" ",
+     col.axis="black",col.main="black",col.lab="black")
+lines(c1,col="darkgoldenrod1",lwd=8)
+lines(c2,col="cornflowerblue",lwd=8)
+lines(c(0,0),c(0,max(c[,2])),lwd=1,lty=2,col="black")
+mtext(side=4,cex=0.5,font=2,"SeqCode by E. Blanco [2019]")
+legend(x="topleft",c("H3K4me3","H3"),col=c("darkgoldenrod1","cornflowerblue"),lwd=8)
+box(col="black")
+dev.off()

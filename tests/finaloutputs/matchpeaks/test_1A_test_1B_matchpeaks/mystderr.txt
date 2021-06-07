@@ -1,0 +1,40 @@
+
+
+			***** Running matchpeaks (SeqCode_v1.0) by Enrique Blanco (2020) *****
+			***** GitHub  source code: https://github.com/eblancoga/seqcode   *****
+			***** SeqCode homepage at: http://ldicrocelab.crg.es             *****
+
+
+> 0. Running on Sat Jun  5 20:03:08 2021
+> 1. Request Memory to Operating System
+> 2. Creating output files
+	Creating the output folder test_1A_test_1B_matchpeaks
+	Filename for the common peaks (test_1A_test_1B_matchpeaks/common_test_1A_test_1B.bed)
+	Filename for peaks only in test_1A (test_1A_test_1B_matchpeaks/only_test_1A.bed)
+	Filename for peaks only in test_1B (test_1A_test_1B_matchpeaks/only_test_1B.bed)
+> 3. Reading File A: test_1A
+	tests/inputs/H3K4me3_chr10.bed: 0.07 Mb
+	Reading:
+	[         0 lines]	[      1000 lines]	[      2000 lines]			Dictionary (hash):
+			chr10                | 			 0
+	2288 peaks were successfully acquired
+> 4. Reading File B: test_1B
+	tests/inputs/H3K27me3_chr10.bed: 0.03 Mb
+	Reading:
+	[         0 lines]			Dictionary (hash):
+			chr10                | 			 0
+	942 peaks were successfully acquired
+> 5. Processing both lists of Peaks
+	Running 2288 peaks of test_1A in chromosome key 0
+> 6. Output final results
+	Peaks intersected in A: 480/2288 (20.98%)
+	Peaks intersected in B: 555/942 (58.92%)
+	Peaks non-intersected in A: 1808/2288 (79.02%)
+	Peaks non intersected in B: 387/942 (41.08%)
+	__________________________________________________________________________
+
+	Memory usage: 	0.58 Megabytes
+	CPU time: 	0.71 secs
+	Total time: 	1 secs (0.02 mins)
+
+

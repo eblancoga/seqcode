@@ -1,0 +1,45 @@
+pdf("tests/outputs/produceGENEmaps/produceGENE2maps.pdf",width=5,height=10,bg="white",fg="black")
+layout(matrix(data=c(1,2,3,4), nrow=1, ncol=4), widths=c(2,1.25,2,1.25),heights=c(1,1,1,1))
+#layout.show(n=3)
+#
+c <- scan("tests/outputs/produceGENEmaps/test_1_GENEmap_5000/HEATmatrix_test_1_5000_processed.txt",sep="\t")
+m<-matrix(c,6,200,byrow=TRUE)
+min <- min(c, na.rm=T)
+max <- max(c, na.rm=T)
+code1 <- col2rgb("white")
+code2 <- col2rgb("darkgoldenrod1")
+ColorRamp <- rgb(seq(code1[1]/255,code2[1]/255,length=50),  # Red
+seq(code1[2]/255,code2[2]/255,length=50),  # Green
+seq(code1[3]/255,code2[3]/255,length=50))  # Blue
+ColorRamp[1]="white"
+ColorLevels <- seq(min/max, max/max, length=length(ColorRamp))
+#
+image(1:ncol(m), 1:nrow(m), t(m),col=ColorRamp, xlab="REGION", ylab="GENES",
+axes=FALSE, zlim=c(min,max), main= "test_1")
+axis(1,at=c(1,51,150,200),labels=c("-5000","TSS","TES","+5000"))
+axis(2,at=c(1,6),labels=c("1","6"))
+#
+image(1, ColorLevels, matrix(data=ColorLevels, ncol=length(ColorLevels),nrow=1),
+col=ColorRamp,xlab="",ylab="",xaxt="n", las = 1)
+#
+c <- scan("tests/outputs/produceGENEmaps/test_7_GENEmap_5000/HEATmatrix_test_7_5000_processed.txt",sep="\t")
+m<-matrix(c,6,200,byrow=TRUE)
+min <- min(c, na.rm=T)
+max <- max(c, na.rm=T)
+code1 <- col2rgb("white")
+code2 <- col2rgb("cornflowerblue")
+ColorRamp <- rgb(seq(code1[1]/255,code2[1]/255,length=50),  # Red
+seq(code1[2]/255,code2[2]/255,length=50),  # Green
+seq(code1[3]/255,code2[3]/255,length=50))  # Blue
+ColorRamp[1]="white"
+ColorLevels <- seq(min/max, max/max, length=length(ColorRamp))
+#
+image(1:ncol(m), 1:nrow(m), t(m),col=ColorRamp, xlab="REGION", ylab="GENES",
+axes=FALSE, zlim=c(min,max), main= "test_7")
+axis(1,at=c(1,51,150,200),labels=c("-5000","TSS","TES","+5000"))
+axis(2,at=c(1,6),labels=c("1","6"))
+#
+image(1, ColorLevels, matrix(data=ColorLevels, ncol=length(ColorLevels),nrow=1),
+col=ColorRamp,xlab="",ylab="",xaxt="n", las = 1)
+mtext(side=4,cex=0.5,font=2,"SeqCode by E. Blanco [Sun Aug 11 10:55:29 2019]")
+dev.off()

@@ -1,0 +1,37 @@
+pdf("tests/outputs/recoverChIPlevels/recoverChIPlevels.pdf",bg="white",fg="black")
+c1 <- read.table ("tests/outputs/recoverChIPlevels/test_1_recoverChIPlevels/PEAKsignal_test_1.bed")
+c2 <- read.table ("tests/outputs/recoverChIPlevels/test_2_recoverChIPlevels/PEAKsignal_test_2.bed")
+c3 <- read.table ("tests/outputs/recoverChIPlevels/test_3_recoverChIPlevels/PEAKsignal_test_3.bed")
+c4 <- read.table ("tests/outputs/recoverChIPlevels/test_4_recoverChIPlevels/PEAKsignal_test_4.bed")
+#
+layout(matrix(data=c(1,2), nrow=2, ncol=1), widths=c(1,1),heights=c(1,1))
+#layout.show(n=2)
+#
+boxplot(log(c1[,6]+1,base=10),
+	log(c2[,6]+1,base=10),
+	log(c3[,6]+1,base=10),
+	log(c4[,6]+1,base=10),
+     	outline=FALSE,ylim=c(0,3.5),
+        xaxt="n",xlab ="",y="",
+     	main="H3K4me3 and H3 levels (MAX, chr10)",
+	col=c("darkgoldenrod1","cornflowerblue"),lwd=4)
+axis(1, labels = FALSE)
+labels <- rep(c("H3K4me3\npeaks","H3K27me3\npeaks"),2)
+text(x = seq_along(labels)+0.25, y = -0.85, srt = 0, adj = 1, labels = labels, xpd = TRUE)
+text(x=1.5,y=0.5,"H3K4me3 levels")
+text(x=3.5,y=0.5,"H3 levels")
+#
+boxplot(log(c1[,5]+1,base=10),
+	log(c2[,5]+1,base=10),
+	log(c3[,5]+1,base=10),
+	log(c4[,5]+1,base=10),
+     	outline=FALSE,ylim=c(0,3),
+        xaxt="n",xlab ="",y="",
+     	main="H3K4me3 and H3 levels (AVG, chr10)",
+	col=c("darkgoldenrod1","cornflowerblue"),lwd=4)
+axis(1, labels = FALSE)
+labels <- rep(c("H3K4me3\npeaks","H3K27me3\npeaks"),2)
+text(x = seq_along(labels)+0.25, y = -0.75, srt = 0, adj = 1, labels = labels, xpd = TRUE)
+text(x=1.5,y=0.5,"H3K4me3 levels")
+text(x=3.5,y=0.5,"H3 levels")
+dev.off()
