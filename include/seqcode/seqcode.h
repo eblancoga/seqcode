@@ -38,10 +38,10 @@ A. DEFINITIONS
 *************************************************************************/
 
 /* Maximum chars per input line             */
-#define MAXLINE 3000             
+#define MAXLINE 10000             
 
 /* Maximum length for strings (mess)        */
-#define MAXSTRING 10000            
+#define MAXSTRING 20000            
 
 /* Maximum length of filenames              */
 #define FILENAMELENGTH 4000
