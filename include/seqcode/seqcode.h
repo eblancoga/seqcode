@@ -38,7 +38,7 @@ A. DEFINITIONS
 *************************************************************************/
 
 /* Maximum chars per input line             */
-#define MAXLINE 1000             
+#define MAXLINE 2000             
 
 /* Maximum length for strings (mess)        */
 #define MAXSTRING 10000            
