@@ -1,6 +1,6 @@
 # README of SeqCode v 1.0 
 
-Enrique Blanco, Mar Gonzalez-Ramirez and Luciano Di Croce (CRG, 2013-2020)
+Enrique Blanco, Mar Gonzalez-Ramirez and Luciano Di Croce (CRG, 2013-2021)
 
 `enrique.blanco at crg.eu`
 
@@ -29,7 +29,7 @@ The SeqCode source code is accessible from GitHub at: https://github.com/eblanco
 
 The SeqCode web tools are available at: http://ldicrocelab.crg.es
 
-Selection of most relevant SeqCode applications: ((Add the name of the function in each example))
+Selection of most relevant SeqCode applications:
 
 * Generate profiles of sequencing data for genome browser visualizations
 * Calculate the distribution of genome features from a set of genomic coordinates
