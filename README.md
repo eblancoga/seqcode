@@ -1,6 +1,6 @@
 # README of SeqCode v 1.0 
 
-Enrique Blanco, Mar Gonzalez-Ramirez and Luciano Di Croce (CRG, 2013-2020)
+Enrique Blanco, Mar Gonzalez-Ramirez and Luciano Di Croce (CRG, 2013-2021)
 
 `enrique.blanco at crg.eu`
 
@@ -29,7 +29,7 @@ The SeqCode source code is accessible from GitHub at: https://github.com/eblanco
 
 The SeqCode web tools are available at: http://ldicrocelab.crg.es
 
-Selection of most relevant SeqCode applications: ((Add the name of the function in each example))
+Selection of most relevant SeqCode applications:
 
 * Generate profiles of sequencing data for genome browser visualizations
 * Calculate the distribution of genome features from a set of genomic coordinates
@@ -55,8 +55,9 @@ for the particular genome that is being analyzed: the list of chromosomes (and t
 transcript annotations. Both files can be easily retrieved for every particular genome assembly from the UCSC 
 genome browser. Commands working with sequencing data require the user to provide the mapped reads of the experiment 
 (BAM or SAM format). SeqCode commands offer the verbose option (-v) to inform on the screen about the basic steps of 
-the procedure. Most commands will generate a new folder in the current working directory, which will contain the final 
-results of the particular running. Users can customize most programs using multiple options (please, check the manual 
+the procedure. Most commands will generate a new folder containing the final results of the particular running. By 
+default, this folder will be created in the working directory, although another path to save the otuput can be defined 
+with the prefix option (-x). Users can customize most programs using multiple options (please, check the manual 
 of each one with the option -h). Graphical outputs are produced by running R scripts that will be stored in the resulting 
 folder as well. The command line release of SeqCode has no limits or restrictions in the set or the size of the input 
 files that will be processed locally in the computer of the user (differently from the website that is intended to be a 
@@ -198,7 +199,8 @@ user interacts with the computer by introducing text commands. SeqCode is able t
 systems through the command-line interface of the Terminal (the shell). The final behavior of such programs can be 
 configured by adding options using the symbol '-' plus the character defining such an option. The output of the program 
 is usually stored into an output folder in which the user will find the resulting plots, the scripts to generate the 
-plots in R (if any), and the data files.
+plots in R (if any), and the data files. The precise location of the output folder in the path can be customized with 
+the option -x (prefix). 
 
 This is the prototype of a SeqCode call from the Terminal (the final format will depend on each SeqCode program):
 
@@ -215,7 +217,7 @@ This is the full list of options for the command buildChIPprofile:
          a program to generate genome-wide ChIPseq/ATACseq/RNAseq profiles for genome browser visualization.
 
       SYNOPSIS
-	    buildChIPprofile [-c <Rcolor>][-l <bp>][-m][-p][-s <reads>][-w <bp>][-v][-h]
+	    buildChIPprofile [-c <Rcolor>][-d][-l <bp>][-m][-p][-s <reads>][-w <bp>][-v][-x prefix][-h]
 	    <chrom_info> <SAM file> <name>
 
       OUTPUT
@@ -224,12 +226,14 @@ This is the full list of options for the command buildChIPprofile:
 
       OPTIONS
 	      -c : Track color (default: black).
+	      -d : Demo mode for small BAM files (min number reads control off).
 	      -l : Avg. fragment size (default: 150).
 	      -m : Invert the score of BedGraph records.
 	      -p : Using pair-end reads mapped in proper pair (default: single-end).
 	      -s : Number of spike-in reads for reference-adjusted normalization.
 	      -w : Window resolution (default: 100).
 	      -v : Verbose. Display info messages.
+	      -x : Prefix for the output folder.
 	      -h : Show this help.
 
       SEE ALSO
@@ -340,7 +344,15 @@ The rest of functions are offered in our web site for a preselected list of ChIP
 The SeqCode full distribution of commands from GitHub can be locally run with no file size restrictions.
 
 
-## 4. How to Cite SeqCode
+## 4. Virtualizations of SeqCode
+
+Full distribution of SeqCode (source code and binaries) is also available for VirtualBox and Docker:
+
+* VirtualBox appliance: http://ldicrocelab.crg.eu/06_Downloads/vmachines/index.php
+* Docker container: http://ldicrocelab.crg.eu/06_Downloads/docker/index.php
+
+
+## 5. How to Cite SeqCode
 
 ### Principal Citation
 
