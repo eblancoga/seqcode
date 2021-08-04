@@ -39,6 +39,7 @@ extern char COLOR6[MAXCOLORNAME];
 extern char COLOR7[MAXCOLORNAME];
 extern int GRADIENT;
 extern int PALETTE;
+extern int QUALITATIVE;
 
 /* required by getopts */
 extern char* optarg;
@@ -64,7 +65,8 @@ void printHelp_genomeDistribution()
   fprintf(stderr,"\t-7 : Color 7, Intergenic (default: corflowerblue).\n");  
   fprintf(stderr,"\t-d : Detailed analysis with introns/exons/promoters.\n");
   fprintf(stderr,"\t-g : Gradient palette from Color1 to white.\n");
-  fprintf(stderr,"\t-p : Viridis palette (1=viridis|2=magma|3=plasma|4=inferno).\n");
+  fprintf(stderr,"\t-p : Viridis palettes (1=viridis|2=magma|3=plasma|4=inferno).\n");
+  fprintf(stderr,"\t-q : ColorBrewer palettes (1=accent|2=paired).\n");
   fprintf(stderr,"\t-s : Simplified with genic/intragenic/intergenic (X bp around TSS).\n");
   fprintf(stderr,"\t-w : Window resolution (default: 100).\n");
   fprintf(stderr,"\t-v : Verbose. Display info messages.\n");
@@ -100,7 +102,7 @@ void readargv_genomeDistribution(int argc,char* argv[],
 	  "NAME\n\t%s - a program to examine the distribution of peaks within distinct genomic features.\n",
 	  GENOMEDISTRIBUTION);
   sprintf(USAGE[2],
-	  "SYNOPSIS\n\t%s [-1/7 <Rcolor>][-d][-g <Rcolor>][-p 1234][-s <bp>][-w <bp>][-v][-x prefix][-h]\n\t<chrom_info> <refGene.txt> <peaks.bed> <name>\n",
+	  "SYNOPSIS\n\t%s [-1/7 <Rcolor>][-d][-g <Rcolor>][-p 1234][-q 12][-s <bp>][-w <bp>][-v][-x prefix][-h]\n\t<chrom_info> <refGene.txt> <peaks.bed> <name>\n",
 	  GENOMEDISTRIBUTION);      
   sprintf(USAGE[3],
 	  "OUTPUT\n\tOne folder with 3 files:\n\t- Peaks associated to genomic regions\n\t- R script commands\n\t- Graphical representation (R is required).\n");
@@ -128,7 +130,7 @@ void readargv_genomeDistribution(int argc,char* argv[],
   strcpy(Prefix,".");
   
   /* Reading setup options */
-  while ((c = getopt(argc,argv,"1:2:3:4:5:6:7:dgp:s:w:vx:h")) != -1)
+  while ((c = getopt(argc,argv,"1:2:3:4:5:6:7:dgp:q:s:w:vx:h")) != -1)
     switch(c)
       {
       case '1':
@@ -160,6 +162,9 @@ void readargv_genomeDistribution(int argc,char* argv[],
 	break;
       case 'p':
 	PALETTE = atoi(optarg);
+        break;
+      case 'q':
+	QUALITATIVE = atoi(optarg);
         break;
       case 's':
 	SIMPLIFIED = atoi(optarg);
@@ -214,7 +219,27 @@ void readargv_genomeDistribution(int argc,char* argv[],
       fprintf(stderr,"%s\n",USAGE[1]);
       fprintf(stderr,"%s\n",USAGE[2]);
       
-      sprintf(mess,"Incompatible options (gradient and palette)\n");
+      sprintf(mess,"Incompatible options (gradient and viridis palette)\n");
+      printError(mess);
+    }
+
+    if (GRADIENT && QUALITATIVE)
+    {
+      fprintf(stderr,"%s\n",USAGE[0]);
+      fprintf(stderr,"%s\n",USAGE[1]);
+      fprintf(stderr,"%s\n",USAGE[2]);
+      
+      sprintf(mess,"Incompatible options (gradient and qualitative palette)\n");
+      printError(mess);
+    }
+
+    if (PALETTE && QUALITATIVE)
+    {
+      fprintf(stderr,"%s\n",USAGE[0]);
+      fprintf(stderr,"%s\n",USAGE[1]);
+      fprintf(stderr,"%s\n",USAGE[2]);
+      
+      sprintf(mess,"Incompatible options (viridis palette and qualitative palette)\n");
       printError(mess);
     }
   
@@ -234,7 +259,17 @@ void readargv_genomeDistribution(int argc,char* argv[],
       fprintf(stderr,"%s\n",USAGE[1]);
       fprintf(stderr,"%s\n",USAGE[2]);
 
-      sprintf(mess,"Palette definition must be between 1 and %d (%d)\n",MAXPALETTE,PALETTE);
+      sprintf(mess,"Viridis palette definition must be between 1 and %d (%d)\n",MAXPALETTE,PALETTE);
+      printError(mess);
+    }
+
+    if (QUALITATIVE<0 || QUALITATIVE>MAXQUALITATIVE)
+    {
+      fprintf(stderr,"%s\n",USAGE[0]);
+      fprintf(stderr,"%s\n",USAGE[1]);
+      fprintf(stderr,"%s\n",USAGE[2]);
+
+      sprintf(mess,"Qualitative palette definition must be between 1 and %d (%d)\n",MAXQUALITATIVE,QUALITATIVE);
       printError(mess);
     }
 }

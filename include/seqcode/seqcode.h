@@ -127,6 +127,24 @@ A. DEFINITIONS
 #define INFERNO_COLOR6 "#330A5FFF"
 #define INFERNO_COLOR7 "#000004FF"
 
+/* Pie chart ColorBrewer accent (RGB)       */
+#define ACCENT_COLOR1 "#7FC97FFF"
+#define ACCENT_COLOR2 "#BEAED4FF"
+#define ACCENT_COLOR3 "#FDC086FF"
+#define ACCENT_COLOR4 "#FFFF99FF"
+#define ACCENT_COLOR5 "#386CB0FF"
+#define ACCENT_COLOR6 "#F0027FFF"
+#define ACCENT_COLOR7 "#BF5B17FF"
+
+/* Pie chart ColorBrewer paired (RGB)       */
+#define PAIRED_COLOR1 "#A6CEE3FF"
+#define PAIRED_COLOR2 "#1F78B4FF"
+#define PAIRED_COLOR3 "#B2DF8AFF"
+#define PAIRED_COLOR4 "#33A02CFF"
+#define PAIRED_COLOR5 "#FB9A99FF"
+#define PAIRED_COLOR6 "#E31A1CFF"
+#define PAIRED_COLOR7 "#FDBF6FFF"
+
 /* Special characters not eligible for output folder names */
 #define SPECSYMBOL1 '*'
 #define SPECSYMBOL2 '+'
@@ -307,8 +325,11 @@ A. DEFINITIONS
 /* Maximum size for promoter regions        */
 #define MAXSIMPLIFIED 10000
 
-/* Maximum size for viridis palette         */
+/* Maximum size for viridis palettes        */
 #define MAXPALETTE 4
+
+/* Maximum size for ColorBrewer palettes    */
+#define MAXQUALITATIVE 2
 
 /* Log10 noise threshold (heatmaps)         */
 #define NOISETHRESHOLD 1
@@ -1067,6 +1088,15 @@ void SetViridisColorsPieCharts(char COLOR1[MAXCOLORNAME],
 			       char COLOR6[MAXCOLORNAME],
 			       char COLOR7[MAXCOLORNAME],
 			       int mode);
+
+void SetQualitativeColorsPieCharts(char COLOR1[MAXCOLORNAME],
+				   char COLOR2[MAXCOLORNAME],
+				   char COLOR3[MAXCOLORNAME],
+				   char COLOR4[MAXCOLORNAME],
+				   char COLOR5[MAXCOLORNAME],
+				   char COLOR6[MAXCOLORNAME],
+				   char COLOR7[MAXCOLORNAME],
+				   int mode);
 
 int ValidationUserName(char UserName[USERNAMELENGTH]);
 

@@ -50,8 +50,11 @@ char COLOR7[MAXCOLORNAME];
 /* Pie chart gradient monocolor */
 int GRADIENT = 0;
 
-/* Pie chart viridis palette */
+/* Pie chart Viridis palettes */
 int PALETTE = 0;
+
+/* Pie chart ColorBrewer palettes */
+int QUALITATIVE = 0;
 
 /* Background color */
 char BGCOLOR[MAXCOLORNAME];
@@ -155,6 +158,14 @@ int main (int argc, char *argv[])
 				COLOR7,PALETTE);
     }
 
+  /* Setting ColorBrever palette colors (optional) */
+  if (QUALITATIVE)
+    {
+      SetQualitativeColorsPieCharts(COLOR1,COLOR2,COLOR3,
+				    COLOR4,COLOR5,COLOR6,
+				    COLOR7,QUALITATIVE);
+    }
+  
   printRes("Loading the R color schema");
    
   /* 2. Read the ChrSize file */

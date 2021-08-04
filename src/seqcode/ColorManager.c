@@ -834,7 +834,7 @@ void ValidateRColorsPieCharts(char COLOR1[MAXCOLORNAME],
     }
 }
 
-/* Check the existence of these two colors in the R color schema */
+/* Set Viridis colors in the current palette */
 void SetViridisColorsPieCharts(char COLOR1[MAXCOLORNAME],
 			       char COLOR2[MAXCOLORNAME],
 			       char COLOR3[MAXCOLORNAME],
@@ -890,5 +890,41 @@ void SetViridisColorsPieCharts(char COLOR1[MAXCOLORNAME],
       strcpy(COLOR5,INFERNO_COLOR5);
       strcpy(COLOR6,INFERNO_COLOR6);
       strcpy(COLOR7,INFERNO_COLOR7);
+    }
+}
+
+
+/* Set ColorBrewer colors in the current palette */
+void SetQualitativeColorsPieCharts(char COLOR1[MAXCOLORNAME],
+			       char COLOR2[MAXCOLORNAME],
+			       char COLOR3[MAXCOLORNAME],
+			       char COLOR4[MAXCOLORNAME],
+			       char COLOR5[MAXCOLORNAME],
+			       char COLOR6[MAXCOLORNAME],
+			       char COLOR7[MAXCOLORNAME],
+			       int mode)
+{
+  /* Define ColorBrewer colors (1) */
+  if (mode==1)
+    {
+      strcpy(COLOR1,ACCENT_COLOR1);
+      strcpy(COLOR2,ACCENT_COLOR2);
+      strcpy(COLOR3,ACCENT_COLOR3);
+      strcpy(COLOR4,ACCENT_COLOR4);
+      strcpy(COLOR5,ACCENT_COLOR5);
+      strcpy(COLOR6,ACCENT_COLOR6);
+      strcpy(COLOR7,ACCENT_COLOR7);
+    }
+
+  /* Define ColorBrewer colors (2) */
+  if (mode==2)
+    {
+      strcpy(COLOR1,PAIRED_COLOR1);
+      strcpy(COLOR2,PAIRED_COLOR2);
+      strcpy(COLOR3,PAIRED_COLOR3);
+      strcpy(COLOR4,PAIRED_COLOR4);
+      strcpy(COLOR5,PAIRED_COLOR5);
+      strcpy(COLOR6,PAIRED_COLOR6);
+      strcpy(COLOR7,PAIRED_COLOR7);
     }
 }
