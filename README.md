@@ -360,8 +360,8 @@ Please, cite the following reference when using one or more components of the Se
 
 Productive visualization of high-throughput sequencing data using the SeqCode open portable platform.
 E. Blanco, M. Gonzalez-Ramirez and L. Di Croce. 
-Scientific Reports 11:19545. 
-[PMID: 34599234] 
+Scientific Reports 11:19545 (2021). 
+https://pubmed.ncbi.nlm.nih.gov/34599234/
 
 
 ### SeqCode in the literature
