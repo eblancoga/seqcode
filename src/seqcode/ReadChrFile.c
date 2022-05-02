@@ -113,6 +113,12 @@ int ReadChrFile (char *FileName, long* ChrSizes, dict* ChrNames)
 
       /* Increase the total number of available chromosomes */
       nChrs++;
+
+      if (nChrs>MAXCHRS)
+	{
+	  sprintf(mess,"Number of distinct chromosome names exceeds MAXCHRS (please, increase this value in include/seqcode.h) - %s\n",chr);
+	  printError(mess);
+	}
     }
   
   fclose(file);

@@ -168,7 +168,7 @@ A. DEFINITIONS
 #define SPECSYMBOL20 '\''
 
 /* Maximum number of distinct chromosomes   */
-#define MAXCHRS 500
+#define MAXCHRS 50
 
 /* Maximum number of distinct genes         */
 #define MAXGENES 100000

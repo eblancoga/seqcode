@@ -36,6 +36,9 @@ long ReadPeaksFile(char* FileName,
   /* Total number of peaks in the file */
   int nPeaks;
 
+  /* Total number of distinct chromosome names in the file */
+  int nChromosomes;
+
   /* Split every input line into several tokens <chr,size> */
   char line[MAXLINE];
   char *line1;
@@ -64,6 +67,7 @@ long ReadPeaksFile(char* FileName,
   
   /* 1. Reset counters */
   nPeaks = 0;  
+  nChromosomes = 0;  
   
   /* Init the info messages */
   printReadingInit();
@@ -136,6 +140,15 @@ long ReadPeaksFile(char* FileName,
 	  if (key == NOTFOUND)
 	    {
 	      key = setkeyDict(ChrNames,chr);
+
+	      /* Updating current number of distinct chromosomes */
+	      nChromosomes++;
+
+	      if (nChromosomes>MAXCHRS)
+		{
+		  sprintf(mess,"Number of distinct chromosome names exceeds MAXCHRS (please, increase this value in include/seqcode.h) - %s\n",chr);
+                  printError(mess);
+		}
 	    }
 	  
 	  /* Store the information for this peak in the appropriate chromosome */
