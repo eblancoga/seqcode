@@ -113,8 +113,8 @@ void ReadSAMFile (char* FileName,
 	  else
 	    {
 	      /* Reverse read */
-	      pos1 = (pos - AVGL)/WINDOWRES;
-	      pos2 = pos/WINDOWRES;
+	      pos1 = ((pos - AVGL)/WINDOWRES)+1;
+	      pos2 = (pos/WINDOWRES)+1;
 	      m->nRvsReads++;
 	    }	  
 
@@ -136,7 +136,7 @@ void ReadSAMFile (char* FileName,
 	      else
 		{
 		  /* Update the number of reads in this interval of positions */
-		  for(i=pos1; i <= pos2; i++) 
+		  for(i=pos1; i < pos2; i++) 
 		    {
 		      READS[key][i]++; 
 		    }
@@ -246,8 +246,8 @@ void ReadSAMPairedFile (char *FileName,
 	      else
 		{
 		  /* Reverse read */
-		  pos1 = (pos - AVGL)/WINDOWRES;
-		  pos2 = pos/WINDOWRES;
+		  pos1 = ((pos - AVGL)/WINDOWRES)+1;
+		  pos2 = (pos/WINDOWRES)+1;
 		  m->nRvsReads++;
 		}	  
 	      
@@ -269,7 +269,7 @@ void ReadSAMPairedFile (char *FileName,
 		  else
 		    {
 		      /* Update the number of reads in this interval of positions */
-		      for(i=pos1; i <= pos2; i++) 
+		      for(i=pos1; i < pos2; i++) 
 			{
 			  READS[key][i]++; 
 			}
